@@ -1,0 +1,47 @@
+header{
+	padding: 30px 0;
+	div.container{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		align-items: center;
+		div.logo{
+			width: 60px;
+			a{
+				display: block;
+			}
+		}
+		div.menu_tools{
+			display: flex;
+			align-items: center;
+			div.resp_search_button{
+			    width: 20px;
+			}
+		}
+		div.top_contact{
+			ul{
+				display: flex;
+				li{
+					margin-right: 15px;
+					font-size: 25px;
+					&:nth-child(1) a{
+						color: #27d367;
+					}
+					&:nth-child(2) a{
+						color: #685da8;
+					}
+					&:nth-child(4) a{
+						color: red;
+					}
+				}
+				li.contact_number{
+					color: $cbase;
+					font-size: 15px;
+					padding: 0 15px;
+					margin-right: 45px;
+					align-self: center;
+				}
+			}
+		}
+	}
+}

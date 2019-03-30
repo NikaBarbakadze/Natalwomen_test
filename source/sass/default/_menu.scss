@@ -1,0 +1,202 @@
+// მთავარი მენიუ
+nav.navigation{
+	> ul{
+		display: flex;
+		@extend .no-list;
+		> li{
+			padding: 5px 0;
+			margin-right: 40px;
+			> a{
+				font-family: roboto;
+				font-weight: 700;
+				font-size: 14px;
+				color: $cbase;
+				text-transform: capitalize;
+				transition: all 0.4s ease;
+			}
+			ul{
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 250px;
+				transition: all 0.4s ease;
+				transition-delay: 0.2s;
+				visibility: hidden;
+				opacity: 0;
+				li{
+					position: relative;
+					padding: 0;
+					a{
+						display: block;
+						position: relative;
+						color: $cread;
+						transition: all 0.4s ease;
+					}
+					&.active,
+					&:hover{
+						> a{
+							color: $ccorp;
+						}
+					}
+					ul{
+						top: 0;
+						left: 100%;		
+					}
+					&:hover{
+						> ul{
+							visibility: visible;
+							opacity: 1;
+						}
+					}
+				}
+			}
+			&:hover{
+				> ul{
+					visibility: visible;
+					opacity: 1;
+				}
+			}
+		    &:hover::before,
+		    &.active:before{
+			    width: 100%;
+		    }
+		    &::before{
+			    display: block;
+                position: absolute;
+                content: "";
+                width: 0;
+                height: 1px;
+                left: 0;
+                bottom: 0;
+                background-color: $cbase;
+                transition: all .4s cubic-bezier(.7,0,.3,1);
+		    }
+		}
+	}
+}
+// მთავარი მენიუ
+// რესპონსივ მენიუ
+div.resp_menu{
+	display: none;
+	z-index: 1000;
+	@media(max-width: 992px){
+		display: block;
+	}
+	div.resp_menu_toggle{
+		width: 100%;
+		height: 40px;
+		background-color: $ccorp;
+		cursor: pointer;
+		div{
+			position: absolute;
+			top: 50%;
+			right: 15px;
+			width: 20px;
+			height: 1px;
+			background-color: $cwhite;
+			transition: all 0.2s ease;
+			&:first-child{
+				margin-top: -8px;
+			}
+			&:last-child{
+				margin-top: 8px;
+			}
+		}
+		&.resp_menu_toggled{
+			div{
+				&:first-child,
+				&:last-child{
+					opacity: 0;
+				}
+				&:nth-child(2){
+					transform: rotate(45deg);
+				}
+				&:nth-child(3){
+					transform: rotate(-45deg);
+				}
+			}
+		}
+	}
+	div.resp_menu_ul{
+		display: none;
+		padding: 0 15px 15px;
+		background-color: $ccorp;
+		> ul{
+			@extend .no-list;
+			> li{
+				position: relative;
+				padding: 10px 5px;
+				border-bottom: 1px solid rgba(255,255,255,0.1);
+				&:last-child{
+					border-bottom: none;
+				}
+				> a{
+					display: block;
+					color: $cwhite;
+				}
+				div.plus_minus{
+					position: absolute;
+					top: 5px;
+					right: 0;
+					width: 30px;
+					height: 30px;
+					background-color: $ccorp;
+					cursor: pointer;
+					div.plus,
+					div.minus{
+						position: absolute;
+						left: 50%;
+						top: 15px;						
+						width: 11px;
+						height: 1px;
+						background-color: $cwhite;
+						transform: translateX(-50%);
+						transition: all 0.2s ease;
+					}
+					div.minus{
+						transform: translateX(-50%) rotate(90deg);
+					}
+					&.plus_minus_toggled{
+						div.minus{
+							transform: translateX(-50%) rotate(0deg);
+						}
+					}
+				}
+				ul{
+					display: none;
+					padding: 10px 0 0 5px;
+					li{
+						position: relative;
+						padding-bottom: 5px;
+						&:before{
+							display: block;
+							position: absolute;
+							left: 0;
+							top: 10px;
+							content: "";
+							width: 5px;
+							height: 1px;
+							background-color: $cwhite;
+						}
+						a{
+							display: block;
+							color: $cwhite;
+							margin-left: 15px;
+						}
+						ul{
+							padding-left: 15px;
+						}
+						div.plus_minus{
+							height: 20px;
+							top: 0px;
+							div.plus,
+							div.minus{
+								top: 10px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
